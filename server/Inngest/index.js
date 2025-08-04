@@ -104,9 +104,6 @@ const sendBookingConfirmationEmail = inngest.createFunction(
       return;
     }
 
-    console.log("Booking:", booking);
-    console.log("User email:", booking.user.email);
-    console.log("Movie:", booking.show.movie.title);
     try {
       await sendEmail({
         to: booking.user.email,
@@ -167,7 +164,7 @@ const sendBookingConfirmationEmail = inngest.createFunction(
               </table>
   
               <p style="margin-top: 30px;">Please show this confirmation at the theater. Enjoy the show!</p>
-              <p style="margin-top: 20px;">Best regards,<br>The MovieTime Team</p>
+              <p style="margin-top: 20px;">Best regards,<br>The QuickShow Team</p>
           </div>
           <div style="background-color: #f7f7f7; color: #777; padding: 15px; text-align: center; font-size: 12px;">
               <p style="margin:0;">This is an automated message. Please do not reply to this email.</p>
@@ -262,7 +259,7 @@ const sendShowReminders = inngest.createFunction(
         </div>
 
         <p style="margin-top: 30px;">Please make sure to arrive a little early to get your snacks and find your seats. We can't wait to see you!</p>
-        <p style="margin-top: 20px;">Enjoy the movie,<br>The MovieTime Team</p>
+        <p style="margin-top: 20px;">Enjoy the movie,<br>The QuickShow Team</p>
     </div>
     <div style="background-color: #f7f7f7; color: #777; padding: 15px; text-align: center; font-size: 12px;">
         <p style="margin:0;">This is an automated reminder. Please do not reply to this email.</p>
@@ -295,7 +292,7 @@ const sendNewShowNotifications = inngest.createFunction(
     for (const user of users) {
       const userEmail = user.email;
       const userName = user.name;
-      const movieLink = `http://localhost:5173/movies/${movieId}`;
+      const movieLink = `https://quickshow-red.vercel.app/movies/${movieId}`;
 
       const subject = `New Show Added: ${movieTitle}`;
       const body = `
@@ -318,7 +315,7 @@ const sendNewShowNotifications = inngest.createFunction(
                   <a href="${movieLink}" style="background-color: #10B981; color: white; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px;">Book Your Tickets</a>
               </div>
 
-              <p style="margin-top: 30px;">Happy watching,<br>The MovieTime Team</p>
+              <p style="margin-top: 30px;">Happy watching,<br>The QuickShow Team</p>
           </div>
           <div style="background-color: #f7f7f7; color: #777; padding: 15px; text-align: center; font-size: 12px;">
               <p style="margin:0;">You are receiving this email because you are a registered user.</p>
